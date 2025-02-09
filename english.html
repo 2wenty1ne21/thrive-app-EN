@@ -1,1 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy</title>
+  <style>
+    /* Reset margins and set the overall background to black */
+    html, body {
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+      background-color: black;
+    }
+    
+    /* Styling for the landing page container */
+    .container {
+      width: 90%;
+      max-width: 800px;
+      margin: 40px auto;  /* Added a little vertical margin for better spacing */
+      background-color: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+    
+    h1 {
+      color: #333;
+    }
+    
+    .btn {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 1.2em;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+    
+    .btn:hover {
+      background-color: #0056b3;
+    }
+    
+    /* Styling for the PDF container */
+    .pdf-container {
+      display: none;
+      margin: 0;
+      padding: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: black;
+    }
+    
+    /* Remove borders/outlines from the iframe and make it full-size */
+    .pdf-container iframe {
+      display: block;
+      width: 100%;
+      height: 100%;
+      border: none;
+      outline: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Landing Page -->
+  <div class="container" id="landingPage">
+    <h1>Privacy Policy</h1>
+    <p>
+      By clicking this link, you access our 
+      <a href="https://drive.google.com/file/d/1cWv8u8Nj6EHZynKPFGxplc8yluyyGKq8/preview" target="_blank">
+        Privacy Policy
+      </a> 
+      which must be accepted in order to access the content. If you do not wish to read it now, you may accept it immediately.
+    </p>
+    <p>
+      By accepting, you authorize the processing of your personal data in accordance with our terms.
+    </p>
+
+    <form id="privacyForm">
+      <label for="accept">
+        <input type="checkbox" name="accept" id="accept" required> I accept the Privacy Policy.
+      </label>
+      <br><br>
+      <button type="submit" class="btn" id="acceptButton" disabled>Access Content</button>
+    </form>
+  </div>
+
+  <!-- PDF Container -->
+  <div class="pdf-container" id="pdfContainer">
+    <iframe id="pdfIframe" 
+            src="https://drive.google.com/file/d/198eO95McRPAESVqA6t42ZQTXYN6sm9W-/preview">
+    </iframe>
+  </div>
+
+  <script>
+    const form = document.getElementById('privacyForm');
+    const acceptCheckbox = document.getElementById('accept');
+    const acceptButton = document.getElementById('acceptButton');
+    const landingPage = document.getElementById('landingPage');
+    const pdfContainer = document.getElementById('pdfContainer');
+
+    // Enable the "Access Content" button when the checkbox is checked
+    acceptCheckbox.addEventListener('change', function() {
+      acceptButton.disabled = !this.checked;
+    });
+
+    // When the form is submitted, hide the landing page and display the PDF container
+    form.addEventListener('submit', function(event) {
+      event.preventDefault();
+      landingPage.style.display = 'none';
+      pdfContainer.style.display = 'block';
+    });
+  </script>
+
+</body>
+</html>
 
